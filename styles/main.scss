@@ -14,7 +14,7 @@ body {
  
 /*navigation*/
 .nav-bar {
-    background-color: #323232;
+    background-color: $basic-background;
     width: 100%;
     height: 80px;
     top: 0;
@@ -93,6 +93,14 @@ body {
     display: flex; 
     align-items: center;
 
+    @include tablet {
+        height: 400px;
+    }
+
+    @include desktop {
+        height: 670px;
+    }
+
     .title-text {
         font-family: "Avenir Next Bold";
         color: white;
@@ -100,95 +108,226 @@ body {
         line-height: 32px;
         padding-left: 16px;
         @include flex-center;
+
+        @include tablet {
+            font-size: 44px;
+            line-height: 44px;
+            padding-left: 24px;
+        }
+    
+        @include desktop {
+            font-size: 60px;
+            line-height: 68px;
+            padding-left: 180px;
+        }
     }
 }
  
 /*about*/
 .about-section {
+
+    background-color: $about-background;
     @include column-flex-start;
     padding: 32px 16px;
 
+    @include tablet {
+        padding: 3rem;
+    }
+
     .about-title {
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 16px;
+        line-height: 22px;
         font-family: "Avenir Next Bold";
+
+        @include tablet {
+            font-size: 32px;
+            line-height: 32px;
+        }
+    
+        @include desktop {
+            font-size: 36px;
+            line-height: 44px;
+            padding-left: 50px;
+        }
+    }
+
+    .about-image__container {
+        @include tablet {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
     }
     
     .about-image {
-        width: 288px;
-        height: 145px;
+        width: 100%;
+        height: 20%;
         margin: 24px 0px;
+
+        @include tablet {
+            width: 100%;
+            height: 600px;
+            margin: 24px 0px;
+        }
+    
+        @include desktop {
+            width: 75%;
+            height: 25%;
+            margin: 24px 0px;
+        }
+          
+        
     }
     
     .about-quote {
-        line-height: 22px;
-        font-size: 14px;
+        line-height: 18px;
+        font-size: 13px;
+        @include tablet {
+            font-family: "Avenir Next Bold";
+            font-size: 20px;
+            line-height: 32px;
+            }
+            
+            @include desktop {
+                font-size: 24px;
+                padding: 0px 12.5%;
+            }
 
         &__author {
             margin-bottom: 40px;
             margin-top: 32px;
             line-height: 20px;
             font-size: 12px;
+
+            @include tablet {
+                padding-left: 16px;
+                font-family: $global-font;
+                font-size: 15px;
+                }
+                
+                @include desktop {
+                    font-size: 18px;
+                }
         }
     }
     
     .about-paragraph {
-        line-height: 18px;
-        font-size: 13px;  
+        margin: 24px 0px;
 
         &__title {
-            /*margin-top: 24px;*/
+            font-size: 16px;
+
+            @include tablet {
+                padding-left: 16px;
+                font-family: "Avenir Next Bold";
+                line-height: 18px;
+                font-size: 13px;  
+            }
+            
+            @include desktop {
+                font-size: 24px;
+                line-height: 24px;
+                padding: 0 13.5%;
+            }
+           
+        }
+
+        &__text-container {
+            margin-top: 24px;
+            @include tablet {
+                display: flex;
+                justify-content: space-around;
+            }
+            @include desktop {
+                padding: 0 13%;
+            }
         }
         
-        &__content {
-            margin-top: 24px;
+        &__text {
+            line-height: 20px;
+            font-size: 12px;  
+            margin: 24px 0px;
+
+            @include tablet {
+                line-height: 20px;
+                font-size: 14px;  
+                padding: 0px 16px;
+            }
+
+            @include desktop {
+                line-height: 22px;
+                font-size: 14px;  
+            }
+
+         
         }
     }
 }
 
 /*photo gallery*/
 .photo-gallery {
-    background-color: #E1E1E1;
-    @include column-flex-start;
+    background-color: $gallery-background;
+    @include column-flex-center;
     padding: 32px 16px;
-
-    @include tablet {
-        justify-content: space-evenly;
-        @include tablet-padding;
-    }
-
-    @include desktop {
-        @include desktop-padding;
-    }
 
     &__title {
         font-family: "Avenir Next Bold";
-        font-size: 24px;
-        line-height: 32px;
-        margin-bottom: 8px;
+        font-size: 14px;
+        line-height: 22px;
+        margin: 8px 0px;
+        align-self: flex-start;
+
+        @include tablet {
+            font-size: 22px;
+            line-height: 35px;
+            padding-left: 40px;
+        }
+    
+        @include desktop {
+            font-size: 36px;
+            line-height: 44px;
+            padding-left: 80px;
+        }
     }
-    
+
     &__images-container {
-    
+        @include column-flex-center;
+
+        @include tablet {
+            display: flex;
+        }
     }
     
     &__image {
-        margin-top: 16px;
         width: 288px;
         height: 145px;
+        margin: 8px 0px;
+
+        @include tablet {
+            margin: 32px 32px;
+        }
     }
 }
 
 /*footer*/
 .footer {
-    background-color: $footer-background;
+    background-color: $basic-background;
     color: white;
     padding: 32px 16px;
     @include column-flex-start;
+    @include tablet {
+        flex-direction: row;
+        justify-content: space-around;
+    }
 
     &-container {
         margin: 16px 0px;
-    
+        @include tablet {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
     }
     
     &-title {
@@ -202,10 +341,10 @@ body {
         justify-content: space-between;
         width: 60%;
         margin-top: 16px;
-    }
-    
-    &-logo-image {
-        display: none;
+
+        @include tablet {
+            justify-content: space-around;
+        }
     }
     
     &-contact {
@@ -223,6 +362,14 @@ body {
             line-height: 20px;
             margin-bottom: 8px;
             color: #E1E1E1;
+        }
+    }
+
+    &-logo-image {
+        display: none;
+
+        @include tablet {
+            display: flex;
         }
     }
 }
