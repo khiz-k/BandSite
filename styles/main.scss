@@ -1,0 +1,228 @@
+@import 'partials/mixins';
+@import 'partials/fonts';
+@import 'partials/colours';
+@import 'partials/variables';
+
+/*globals*/
+* {
+    @include reset;
+}
+
+body {
+    font-family: $global-font;
+}
+ 
+/*navigation*/
+.nav-bar {
+    background-color: #323232;
+    width: 100%;
+    height: 80px;
+    top: 0;
+    @include column-flex-center;
+
+    @include tablet {
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    &__logo {
+        width: 100%;
+        height: 50%;
+        @include flex-center;
+
+        @include tablet {
+            height: 100%;
+            width: 25%;
+        }
+
+        @include desktop {
+            width: 15%;
+        }
+    
+        &-image {
+            height: 1rem;
+        }
+    }
+
+    &__anchor {
+        color: #E1E1E1;
+        text-decoration: none;
+        @include flex-center;
+    }
+
+    &__list {
+        width: 100%;
+        height: 50%;
+        display: flex; 
+        justify-content: space-evenly;
+
+        @include tablet {
+            height: 100%;
+            width: 33%;
+            align-self: flex-end;
+        }
+
+        @include desktop {
+            width: 25%;
+        }
+    
+        .nav-bar__item {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+
+            &--active {
+                border-bottom: solid 3px #fff;
+            }
+            
+            #current-anchor {
+                color: #fff;
+            }    
+        }    
+    }  
+}
+
+/*title*/
+.title-section {
+    width: 100%;
+    height: 183px;
+    background-image: url('/assets/images/landing-image.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex; 
+    align-items: center;
+
+    .title-text {
+        font-family: "Avenir Next Bold";
+        color: white;
+        font-size: 24px;
+        line-height: 32px;
+        padding-left: 16px;
+        @include flex-center;
+    }
+}
+ 
+/*about*/
+.about-section {
+    @include column-flex-start;
+    padding: 32px 16px;
+
+    .about-title {
+        font-size: 24px;
+        line-height: 32px;
+        font-family: "Avenir Next Bold";
+    }
+    
+    .about-image {
+        width: 288px;
+        height: 145px;
+        margin: 24px 0px;
+    }
+    
+    .about-quote {
+        line-height: 22px;
+        font-size: 14px;
+
+        &__author {
+            margin-bottom: 40px;
+            margin-top: 32px;
+            line-height: 20px;
+            font-size: 12px;
+        }
+    }
+    
+    .about-paragraph {
+        line-height: 18px;
+        font-size: 13px;  
+
+        &__title {
+            /*margin-top: 24px;*/
+        }
+        
+        &__content {
+            margin-top: 24px;
+        }
+    }
+}
+
+/*photo gallery*/
+.photo-gallery {
+    background-color: #E1E1E1;
+    @include column-flex-start;
+    padding: 32px 16px;
+
+    @include tablet {
+        justify-content: space-evenly;
+        @include tablet-padding;
+    }
+
+    @include desktop {
+        @include desktop-padding;
+    }
+
+    &__title {
+        font-family: "Avenir Next Bold";
+        font-size: 24px;
+        line-height: 32px;
+        margin-bottom: 8px;
+    }
+    
+    &__images-container {
+    
+    }
+    
+    &__image {
+        margin-top: 16px;
+        width: 288px;
+        height: 145px;
+    }
+}
+
+/*footer*/
+.footer {
+    background-color: $footer-background;
+    color: white;
+    padding: 32px 16px;
+    @include column-flex-start;
+
+    &-container {
+        margin: 16px 0px;
+    
+    }
+    
+    &-title {
+        font-size: 36px;
+        line-height: 44px;
+        font-family: "Avenir Next Bold";
+    }
+    
+    &-socials {
+        display: flex;
+        justify-content: space-between;
+        width: 60%;
+        margin-top: 16px;
+    }
+    
+    &-logo-image {
+        display: none;
+    }
+    
+    &-contact {
+        margin: 16px 0px;
+    
+        &__title {
+            font-size: 13px;
+            line-height: 18px;
+            margin-bottom: 8px;
+        
+        }
+    
+        &__info {
+            font-size: 12px;
+            line-height: 20px;
+            margin-bottom: 8px;
+            color: #E1E1E1;
+        }
+    }
+}
