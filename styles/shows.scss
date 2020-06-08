@@ -1,0 +1,277 @@
+@import 'partials/mixins';
+@import 'partials/fonts';
+@import 'partials/colours';
+@import 'partials/variables';
+
+/*globals*/
+*, html {
+    @include reset;
+}
+
+body {
+    font-family: $global-font;
+}
+ 
+/*navigation*/
+.nav-bar {
+    background-color: $nav-background;
+    width: 100%;
+    height: 80px;
+    top: 0;
+    @include column-flex-center;
+
+    @include tablet {
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    &__logo {
+        width: 100%;
+        height: 50%;
+        @include flex-center;
+
+        @include tablet {
+            height: 100%;
+            width: 25%;
+        }
+
+        @include desktop {
+            width: 15%;
+        }
+    
+        &-image {
+            height: 1.25rem;
+        }
+    }
+
+    &__anchor {
+        color: #E1E1E1;
+        text-decoration: none;
+        @include flex-center;
+
+        &--active {
+            color: #FFFFFF;
+        }
+    }
+
+    &__list {
+        width: 100%;
+        height: 50%;
+        display: flex; 
+        justify-content: space-evenly;
+
+        @include tablet {
+            height: 100%;
+            width: 33%;
+            align-self: flex-end;
+        }
+
+        @include desktop {
+            width: 25%;
+        }
+    
+        .nav-bar__item {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+
+            &--active {
+                border-bottom: solid 3px #FFFFFF;
+            }
+        }    
+    }  
+}
+
+/*title*/
+.page-title {
+    width: 100%;
+    height: 300px;
+    background:
+    linear-gradient(
+        rgba(0, 0, 0, 0.5), 
+        rgba(0, 0, 0, 0.5)
+    ),
+    url('/assets/images/shows-image.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    @include column-flex-center;
+
+    @include tablet {
+        height: 400px;
+        align-items: flex-start;
+        padding: 0px 32px;
+    }
+
+    @include desktop {
+        height: 670px;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+    &__info {
+        @include column-flex-start;
+
+        &-sub {
+            font-family: $global-font__bold;
+            color: #FFFFFF;
+            @include flex-center;
+            @include h2-text-style;
+
+            @include tablet {
+                @include tablet-h2-text;
+            }
+        }
+
+        &-text {
+            font-family: $global-font__bold;
+            color: #FFFFFF;
+            margin: 16px 0px;
+            @include flex-center;
+            @include h1-text-style;
+
+            @include tablet {
+                margin: 32px 0px;
+                @include tablet-h1-text;
+            
+            }
+        
+            @include desktop {
+                margin: 48px 0px;
+                @include desktop-hero-text;
+            
+            }
+        }
+    }
+}
+
+
+
+
+
+/*footer*/
+.footer {
+    background-color: $footer-background;
+    color: white;
+    bottom: 0;
+    @include column-flex-center;
+    @include standard-padding;
+    padding-bottom: 16px;
+
+    @include tablet {
+        @include tablet-padding;
+        flex-direction: row;
+        justify-content: space-around;
+        padding-bottom: 24px;
+    }
+
+    @include desktop {
+        @include desktop-padding;
+        padding-bottom: 48px;
+    }
+
+    &-container {
+        padding: 8px 0px;
+    
+        @include tablet {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+    }
+    
+    &__title {
+        font-family: $global-font__bold;
+        margin: 24px 0px;
+        @include h1-text-style;
+        
+        @include tablet {
+            margin: 32px 0px;
+            @include tablet-h1-text;
+        }
+
+        @include desktop {
+            margin: 48px 0px;
+        }
+    }
+    
+    &__socials {
+        display: flex;
+        justify-content: space-between;
+        width: 50%;
+
+        @include tablet {
+            width: 25%;
+            justify-content: space-evenly;
+            margin-top: 40px;
+        }
+
+        @include desktop {
+            margin-top: 56px;
+        }
+
+        &-anchor {
+        }
+
+        &-image {
+        }
+    }
+    
+    &__contact {
+        padding: 8px 0px;
+
+        @include tablet {
+            padding: 16px 0px;
+            padding-right: 32px;
+        }
+        
+        @include desktop {
+            padding: 40px 0px;
+            padding-right: 40px;
+        }
+    
+        &-title {
+            @include h4-text-style;
+            
+            @include tablet {
+                @include tablet-h4-text;
+            }
+        }
+    
+        &-info {
+            color: #E1E1E1;
+            padding: 8px 0px;
+            @include h5-text-style;
+            @include tablet {
+                @include tablet-h5-text;
+            }
+        }
+    }
+
+    &__logo {
+        display: none;
+
+        @include tablet {
+            height: 100;
+            display: flex;
+            align-self: flex-start;
+            margin-top: 48px;
+        }
+
+        @include desktop {
+            margin-top: 60px;
+        }
+
+        &-image {
+        }
+    }
+    
+    .copyright {
+        color: #E1E1E1;
+        @include h5-text-style;
+        @include tablet {
+            @include tablet-h5-text;
+        }
+    }
+}
