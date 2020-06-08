@@ -82,6 +82,27 @@
             <section class="join-convo">
                 <h2 class="join-convo__title">Join the Conversation</h2>
                 <div class="join-convo__comments">
+                    <div class="comment-form">
+                        <img src="assets/images/Mohan-muruge.jpg" class="comment-form__image" alt="Comment Form Image">
+                        <div class="form">
+                            <form name="add__comment" id="add__comment" class="add__comment" action="">
+                                <label for="user_name">Name</label>
+                                <input type="text" name="user_name" id="user_name" class="user_name" placeholder="Enter your name" required="true">
+                                <label for="comment">Comment</label>
+                                <textarea name="comment" id="comment" class="comment" placeholder="Add a new comment" required="true"></textarea> 
+                                <div class="submit-container">
+                                    <input type="button" name="post_comment" id="post_comment" class="button post_comment" value="comment">
+                                </div>
+                            </form>
+                        </div>
+                    </div>   
+                    <div class="comment">
+                        <div class="comment__text">
+                            <h5 class="comment__name"><span class="comment__timestamp"></span></h5>
+                            <p class="comment__paragraph">
+                            </p>
+                        </div>
+                    </div>
                     <div class="comment">
                         <img src="assets/images/default-comment-image.jpg" class="comment__image" alt="Default Comment Image">
                         <div class="comment__text">
