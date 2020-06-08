@@ -4,7 +4,7 @@
 @import 'partials/variables';
 
 /*globals*/
-* {
+*, html {
     @include reset;
 }
 
@@ -14,7 +14,7 @@ body {
  
 /*navigation*/
 .nav-bar {
-    background-color: $basic-background;
+    background-color: $nav-background;
     width: 100%;
     height: 80px;
     top: 0;
@@ -23,6 +23,10 @@ body {
     @include tablet {
         flex-direction: row;
         justify-content: flex-start;
+    }
+
+    @include desktop {
+        padding-left: 180px;
     }
 
     &__logo {
@@ -40,7 +44,7 @@ body {
         }
     
         &-image {
-            height: 1rem;
+            height: 1.25rem;
         }
     }
 
@@ -48,6 +52,10 @@ body {
         color: #E1E1E1;
         text-decoration: none;
         @include flex-center;
+
+        &--active {
+            color: #FFFFFF;
+        }
     }
 
     &__list {
@@ -64,6 +72,7 @@ body {
 
         @include desktop {
             width: 25%;
+            padding-left: 28px;
         }
     
         .nav-bar__item {
@@ -72,21 +81,22 @@ body {
             justify-content: center;
 
             &--active {
-                border-bottom: solid 3px #fff;
+                border-bottom: solid 3px #FFFFFF;
             }
-            
-            #current-anchor {
-                color: #fff;
-            }    
         }    
     }  
 }
 
 /*title*/
-.title-section {
+.page-title {
     width: 100%;
     height: 183px;
-    background-image: url('/assets/images/landing-image.jpg');
+    background:
+    linear-gradient(
+        rgba(0, 0, 0, 0.5), 
+        rgba(0, 0, 0, 0.5)
+    ),
+    url('/assets/images/landing-image.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -101,227 +111,312 @@ body {
         height: 670px;
     }
 
-    .title-text {
-        font-family: "Avenir Next Bold";
-        color: white;
-        font-size: 24px;
-        line-height: 32px;
-        padding-left: 16px;
+    &__text {
+        font-family: $global-font__bold;
+        color: #FFFFFF;
         @include flex-center;
+        @include h1-text-style;
 
         @include tablet {
-            font-size: 44px;
-            line-height: 44px;
+            @include tablet-h1-text;
             padding-left: 24px;
         }
     
         @include desktop {
-            font-size: 60px;
-            line-height: 68px;
+            @include desktop-hero-text;
             padding-left: 180px;
         }
     }
 }
  
 /*about*/
-.about-section {
-
+.about {
+    width: 100%;
     background-color: $about-background;
-    @include column-flex-start;
-    padding: 32px 16px;
+    @include column-flex-center;
+    @include standard-padding;
+    padding-bottom: 16px;
 
     @include tablet {
-        padding: 3rem;
+        @include tablet-padding;
+        padding-bottom: 24px;
     }
 
-    .about-title {
-        font-size: 16px;
-        line-height: 22px;
-        font-family: "Avenir Next Bold";
-
-        @include tablet {
-            font-size: 32px;
-            line-height: 32px;
-        }
-    
-        @include desktop {
-            font-size: 36px;
-            line-height: 44px;
-            padding-left: 50px;
-        }
+    @include desktop {
+        @include desktop-padding;
+        padding-bottom: 48px;
     }
 
-    .about-image__container {
-        @include tablet {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-    }
-    
-    .about-image {
-        width: 100%;
-        height: 20%;
+    &__title {
+        font-family: $global-font__bold;
+        align-self: flex-start;
         margin: 24px 0px;
-
+        @include h1-text-style;
+        
         @include tablet {
-            width: 100%;
-            height: 600px;
-            margin: 24px 0px;
+            margin: 32px 0px;
+            @include tablet-h1-text;
+        }
+
+        @include desktop {
+            margin: 48px 0px;
+        }
+    }
+
+    &__info {
+        width: 100%;
+        height: 50%;
+  
+        @include tablet {
+            height: 50%;
         }
     
         @include desktop {
             width: 75%;
-            height: 25%;
-            margin: 24px 0px;
+            height: 37.5%;
+        }   
+    }
+
+    &__image-container {
+        width: 100%;
+
+        .about-image {
+            width: 100%;
+            height: 50%;
+      
+            @include tablet {
+                height: 33%;
+            }
         }
-          
-        
     }
     
-    .about-quote {
-        line-height: 18px;
-        font-size: 13px;
+    &__quote {
+        font-family: $global-font__bold;
+        width: 100%;
+        @include h3-text-style;
+       
         @include tablet {
-            font-family: "Avenir Next Bold";
-            font-size: 20px;
-            line-height: 32px;
-            }
-            
-            @include desktop {
-                font-size: 24px;
-                padding: 0px 12.5%;
-            }
+            @include tablet-h3-text;
+        }
 
-        &__author {
-            margin-bottom: 40px;
-            margin-top: 32px;
-            line-height: 20px;
-            font-size: 12px;
+        &-author {
+            font-family: $global-font__demi-bold;
+            @include h4-text-style;
 
             @include tablet {
-                padding-left: 16px;
                 font-family: $global-font;
-                font-size: 15px;
-                }
-                
-                @include desktop {
-                    font-size: 18px;
+                @include tablet-h4-text;
                 }
         }
     }
     
-    .about-paragraph {
-        margin: 24px 0px;
+    &__article {
+        width: 100%;
 
-        &__title {
-            font-size: 16px;
+        &-title {
+            @include h3-text-style;
+            font-family: $global-font__bold;
 
             @include tablet {
-                padding-left: 16px;
-                font-family: "Avenir Next Bold";
-                line-height: 18px;
-                font-size: 13px;  
+                @include tablet-h3-text;
+          
             }
-            
-            @include desktop {
-                font-size: 24px;
-                line-height: 24px;
-                padding: 0 13.5%;
-            }
-           
         }
 
-        &__text-container {
-            margin-top: 24px;
+        &-paragraph {
+      
             @include tablet {
-                display: flex;
-                justify-content: space-around;
-            }
-            @include desktop {
-                padding: 0 13%;
-            }
-        }
-        
-        &__text {
-            line-height: 20px;
-            font-size: 12px;  
-            margin: 24px 0px;
-
-            @include tablet {
-                line-height: 20px;
-                font-size: 14px;  
-                padding: 0px 16px;
+                display: flex; 
+                flex-direction: row;
+                justify-content: space-between;
             }
 
-            @include desktop {
-                line-height: 22px;
-                font-size: 14px;  
+            &__text {
+                @include h4-text-style;
+    
+                @include tablet {
+                    @include tablet-h4-text;
+                }
             }
-
-         
         }
     }
 }
 
 /*photo gallery*/
 .photo-gallery {
+    width: 100%;
     background-color: $gallery-background;
     @include column-flex-center;
-    padding: 32px 16px;
+    @include standard-padding;
+    padding-bottom: 16px;
+
+    @include tablet {
+        @include tablet-padding;
+        padding-bottom: 24px;
+    }
+
+    @include desktop {
+        @include desktop-padding;
+        padding-bottom: 48px;
+    }
 
     &__title {
-        font-family: "Avenir Next Bold";
-        font-size: 14px;
-        line-height: 22px;
-        margin: 8px 0px;
+        font-family: $global-font__bold;
         align-self: flex-start;
-
+        margin: 24px 0px;
+        @include h1-text-style;
+        
         @include tablet {
-            font-size: 22px;
-            line-height: 35px;
-            padding-left: 40px;
+            margin: 32px 0px;
+            @include tablet-h1-text;
         }
-    
+
         @include desktop {
-            font-size: 36px;
-            line-height: 44px;
-            padding-left: 80px;
+            margin: 48px 0px;
         }
     }
 
-    &__images-container {
-        @include column-flex-center;
+    &__container {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
 
-        @include tablet {
-            display: flex;
+        @include desktop {
+            width: 1120px;
         }
     }
     
     &__image {
         width: 288px;
         height: 145px;
-        margin: 8px 0px;
+        display: inline-block;
+        margin: 8px;
 
         @include tablet {
-            margin: 32px 32px;
+            width: 224px;
+            height: 126px;
+        }
+
+        @include desktop {
+            width: 344px;
+            height: 193px;
+        }
+    }
+}
+
+/*join the conversation*/
+.join-convo {
+    width: 100%;
+    background-color: $about-background;
+    @include column-flex-center;
+    @include standard-padding;
+    padding-bottom: 16px;
+
+    @include tablet {
+        @include tablet-padding;
+        padding-bottom: 24px;
+    }
+
+    @include desktop {
+        @include desktop-padding;
+        padding-bottom: 48px;
+    }
+
+    &__title {
+        font-family: $global-font__bold;
+        align-self: flex-start;
+        margin: 24px 0px;
+        @include h1-text-style;
+        
+        @include tablet {
+            margin: 32px 0px;
+            @include tablet-h1-text;
+        }
+
+        @include desktop {
+            margin: 48px 0px;
+        }
+    }
+
+    &__comments {
+        width: 100%;
+        height: 50%;
+        @include column-flex-center;
+
+        @include tablet {
+            height: 50%;
+        }
+    
+        @include desktop {
+            width: 75%;
+            height: 37.5%;
+        }   
+
+        .comment {
+            border-bottom: solid 2px #E1E1E1;
+            margin: 16px 0px;
+            display: flex;
+            flex-direction: row;
+
+            &__image {
+                height: 48px;
+                width: 48px;
+                border-radius: 25px;
+                background-color: #E1E1E1;
+            }
+
+            &__text {
+                margin-left: 8px;
+            
+            
+            }
+
+            &__name {
+                display: flex;
+                justify-content: space-between;
+                @include h4-text-style;
+
+            }
+
+            &__timestamp {
+                color: #E1E1E1;
+                font-weight: 100;   
+            }
+
+            &__paragraph {
+                margin: 16px 0px;
+                @include h4-text-style;
+                
+            }
         }
     }
 }
 
 /*footer*/
 .footer {
-    background-color: $basic-background;
+    background-color: $footer-background;
     color: white;
-    padding: 32px 16px;
-    @include column-flex-start;
+    bottom: 0;
+    @include column-flex-center;
+    @include standard-padding;
+    padding-bottom: 16px;
+
     @include tablet {
+        @include tablet-padding;
         flex-direction: row;
         justify-content: space-around;
+        padding-bottom: 24px;
+    }
+
+    @include desktop {
+        @include desktop-padding;
+        padding-bottom: 48px;
     }
 
     &-container {
-        margin: 16px 0px;
+        padding: 8px 0px;
+    
         @include tablet {
             width: 100%;
             display: flex;
@@ -329,70 +424,98 @@ body {
             justify-content: flex-start;
         }
     }
+    
+    &__title {
+        font-family: $global-font__bold;
+        margin: 24px 0px;
+        @include h1-text-style;
+        
+        @include tablet {
+            margin: 32px 0px;
+            @include tablet-h1-text;
+        }
 
-    #top-container {
-        include tablet {
-            margin-left: 16px;
+        @include desktop {
+            margin: 48px 0px;
         }
     }
     
-    &-title {
-        font-size: 36px;
-        line-height: 44px;
-        font-family: "Avenir Next Bold";
-    }
-    
-    &-socials {
+    &__socials {
         display: flex;
         justify-content: space-between;
         width: 50%;
-        margin-top: 16px;
 
         @include tablet {
             width: 25%;
             justify-content: space-evenly;
+            margin-top: 40px;
+        }
+
+        @include desktop {
+            margin-top: 56px;
+        }
+
+        &-anchor {
+        }
+
+        &-image {
         }
     }
     
-    &-contact {
-        margin: 16px 0px;
+    &__contact {
+        padding: 8px 0px;
 
         @include tablet {
-            margin: 16px 32px;
+            padding: 16px 0px;
+            padding-right: 32px;
         }
-    
-        &__title {
-            font-size: 13px;
-            line-height: 18px;
-            margin-bottom: 8px;
         
+        @include desktop {
+            padding: 40px 0px;
+            padding-right: 40px;
         }
     
-        &__info {
-            font-size: 12px;
-            line-height: 20px;
-            margin-bottom: 8px;
+        &-title {
+            @include h4-text-style;
+            
+            @include tablet {
+                @include tablet-h4-text;
+            }
+        }
+    
+        &-info {
             color: #E1E1E1;
+            padding: 8px 0px;
+            @include h5-text-style;
+            @include tablet {
+                @include tablet-h5-text;
+            }
         }
     }
 
-    #copyright {
-        width: 67%;
-        display: flex;
-        justify-content: flex-start;
-
-        @include tablet {
-            width: 100%;
-            padding-left: 32px;
-        }
-    }
-
-    &-logo-image {
+    &__logo {
         display: none;
 
         @include tablet {
+            height: 100%;
             display: flex;
-            margin-top: 32px;
+            align-self: flex-start;
+            margin-top: 48px;
+        }
+
+        @include desktop {
+            margin-top: 60px;
+        }
+
+        &-image {
+        }
+    }
+    
+    .copyright {
+        color: #E1E1E1;
+        @include h5-text-style;
+        @include tablet {
+            @include tablet-h5-text;
         }
     }
 }
