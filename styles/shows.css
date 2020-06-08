@@ -276,6 +276,133 @@ body {
   }
 }
 
+/*Shows Table*/
+.shows-content .container {
+  max-width: 67%;
+  margin: auto;
+}
+
+.shows-content .table .table-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .shows-content .table .table-content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .shows-content .table .table-content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.shows-content .table .table-content .shows-title {
+  font-size: 40px;
+  font-weight: bold;
+  -ms-flex-preferred-size: 25%;
+      flex-basis: 25%;
+}
+
+.shows-content .table .table-content .table-inner {
+  -ms-flex-preferred-size: 75%;
+      flex-basis: 75%;
+}
+
+.shows-content .table .table-content .table-inner .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.shows-content .table .table-content .table-inner .row.row-title {
+  font-size: 15px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .shows-content .table .table-content .table-inner .row.row-title {
+    display: none;
+  }
+}
+
+.shows-content .table .table-content .table-inner .row .column {
+  -ms-flex-preferred-size: 25%;
+      flex-basis: 25%;
+}
+
+.shows-content .table .table-content .table-inner .data-section .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #808080;
+}
+
+@media (max-width: 768px) {
+  .shows-content .table .table-content .table-inner .data-section .row {
+    display: block;
+  }
+}
+
+.shows-content .table .table-content .table-inner .data-section .row .column {
+  font-size: 18px;
+  text-align: left;
+  -ms-flex-preferred-size: 25%;
+      flex-basis: 25%;
+}
+
+.shows-content .table .table-content .table-inner .data-section .row .column .title {
+  font-size: 15px;
+  font-weight: normal;
+  text-transform: uppercase;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .shows-content .table .table-content .table-inner .data-section .row .column .title {
+    display: block;
+  }
+}
+
+.shows-content .table .table-content .table-inner .data-section .row .column .action {
+  text-align: center;
+}
+
+.shows-content .table .table-content .table-inner .data-section .row .column .action .button {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  display: inline-block;
+  width: 160px;
+}
+
+@media (max-width: 768px) {
+  .shows-content .table .table-content .table-inner .data-section .row .column .action .button {
+    width: 100%;
+    padding: 10px 0;
+  }
+}
+
 /*footer*/
 .footer {
   background-color: #323232;

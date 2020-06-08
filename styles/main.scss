@@ -353,6 +353,25 @@ body {
             height: 37.5%;
         }   
 
+        .comment-form {
+            border-bottom: solid 2px #E1E1E1;
+            margin: 16px 0px;
+            display: flex;
+            flex-direction: row;
+
+            &__image {
+                height: 48px;
+                width: 48px;
+                border-radius: 25px;
+                background-color: #E1E1E1;
+            }
+
+            .form {
+                margin-left: 16px;
+                
+            }
+        }
+
         .comment {
             border-bottom: solid 2px #E1E1E1;
             margin: 16px 0px;
@@ -368,8 +387,6 @@ body {
 
             &__text {
                 margin-left: 8px;
-            
-            
             }
 
             &__name {

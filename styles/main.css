@@ -573,6 +573,29 @@ body {
   }
 }
 
+.join-convo__comments .comment-form {
+  border-bottom: solid 2px #E1E1E1;
+  margin: 16px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.join-convo__comments .comment-form__image {
+  height: 48px;
+  width: 48px;
+  border-radius: 25px;
+  background-color: #E1E1E1;
+}
+
+.join-convo__comments .comment-form .form {
+  margin-left: 16px;
+}
+
 .join-convo__comments .comment {
   border-bottom: solid 2px #E1E1E1;
   margin: 16px 0px;
