@@ -145,92 +145,126 @@ body {
     }
 }
 
-/*Shows Table*/
-.shows-content{
-	.container {
-	    max-width: 67%;
-        margin: auto;
-	}
-    .table{
-		.table-content{
-			display: flex;
-			@media (min-width: 768px) and (max-width: 1024px) {
-				flex-direction: column;
-			}
-			@media (max-width: 768px){
-				flex-direction: column;
-			}
-			.shows-title{
-				font-size: 40px;
-				font-weight: bold;
-				flex-basis: 25%;
-			}
-			.table-inner{
-				flex-basis: 75%;
-				.row{
-					display: flex;
-					align-items: center;
-					&.row-title{
-						font-size: 15px;
-						font-weight: normal;
-						text-transform: uppercase;
-						@media (max-width: 768px){
-							display: none;
-						}
-					}
-					.column{
-						flex-basis: 25%
-					}
-				}
+/*shows*/
+.shows {
+    width: 100%;
+    background-color: #FFFFFF;
+    @include column-flex-center;
+    @include standard-padding;
+    padding-bottom: 16px;
 
-				.data-section{
-					.row{
-						display: flex;
-						align-items: center;
-						padding: 16px 0;
-    					border-bottom: 1px solid #808080;
-    					@media (max-width: 768px){
-							display: block;
-						}
-						.column {
-							font-size: 18px;
-							text-align: left;
-							flex-basis: 25%;
+    @include tablet {
+        @include tablet-padding;
+        padding-bottom: 24px;
+    }
 
-							.title{
-								font-size: 15px;
-								font-weight: normal;
-								text-transform: uppercase;
-								display: none;
-								@media (max-width: 768px){
-									display: block;
-								}
-							}
+    @include desktop {
+        @include desktop-padding;
+        padding-bottom: 48px;
+    }
 
-							.action{
-								text-align: center;
-								.button {
-								    background-color: #000;
-								    color: #fff;
-								    text-align: center;
-								    padding: 10px 20px;
-								    cursor: pointer;
-								    border-radius: 4px;
-								    display: inline-block;
-								    width: 160px;
-								    @media (max-width: 768px){
-								    	width: 100%;
-								    	padding: 10px 0;
-								    }
-								}
-							}
-						}
-					}
-				}
-			}
-		}
+    &__title {
+        font-family: $global-font__bold;
+        align-self: flex-start;
+        margin: 24px 0px;
+        @include h1-text-style;
+        
+        @include tablet {
+            margin: 32px 0px;
+            @include tablet-h1-text;
+        }
+
+        @include desktop {
+            margin: 48px 0px;
+        }
+    }
+
+    &__table {
+        width: 100%;
+        height: 50%;
+  
+        @include tablet {
+            height: 50%;
+        }
+    
+        @include desktop {
+            width: 75%;
+            height: 37.5%;
+        }   
+
+        .table{
+            flex-basis: 75%;
+
+            .row {
+                display: flex;
+                align-items: center;
+
+                .row-title {
+                    @include h4-text-style;
+                    font-weight: normal;
+                    text-transform: uppercase;
+                    @media (max-width: 767px)/*test*/{
+                        display: none;
+                    }
+                }
+                .column{
+                    flex-basis: 25%
+                }
+            }
+
+            .current-data {
+
+                .row {
+                    display: flex;
+                    align-items: center;
+                    padding: 16px 0;
+                    border-bottom: 1px solid #E1E1E1;
+                    @media (max-width: 767px)/*test*/{
+                        display: block;
+                    }
+                    .column {
+                        @include h4-text-style;
+
+                        @include tablet {
+                            @include tablet-h4-text;
+                        }
+                        text-align: left;
+                        flex-basis: 25%;
+
+                        .title{
+                            @include h4-text-style;
+                            font-weight: normal;
+                            text-transform: uppercase;
+                            display: none;
+                            @media (max-width: 767px)/*test*/{
+                                display: block;
+                            }
+                        }
+
+                        .action{
+                            text-align: center;
+                            .button {
+                                background-color: #323232;
+                                color: #FFFFFF;
+                                text-align: center;
+                                padding: 10px 20px;
+                                cursor: pointer;
+                                border-radius: 4px;
+                                display: inline-block;
+                                width: 160px;
+                                @media (max-width: 767px)/*test*/{
+                                    width: 100%;
+                                    padding: 10px 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
+
 
 /*footer*/
 .footer {
