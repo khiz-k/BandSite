@@ -317,6 +317,7 @@ body {
 .about__quote {
   font-family: "Avenir Next Bold";
   width: 100%;
+  margin: 16px 0px;
   font-size: 14px;
   line-height: 20px;
 }
@@ -332,6 +333,7 @@ body {
   font-family: "Avenir Next Demi Bold";
   font-size: 13px;
   line-height: 18px;
+  margin: 16px 0px;
 }
 
 @media (min-width: 768px) {
@@ -344,12 +346,14 @@ body {
 
 .about__article {
   width: 100%;
+  margin: auto;
 }
 
 .about__article-title {
   font-size: 14px;
   line-height: 20px;
   font-family: "Avenir Next Bold";
+  margin-top: 16px;
 }
 
 @media (min-width: 768px) {
@@ -357,6 +361,10 @@ body {
     font-size: 16px;
     line-height: 24px;
   }
+}
+
+.about__article-paragraph {
+  margin: 16px 0px;
 }
 
 @media (min-width: 768px) {
@@ -377,12 +385,14 @@ body {
 .about__article-paragraph__text {
   font-size: 13px;
   line-height: 18px;
+  margin: 8px 0px;
 }
 
 @media (min-width: 768px) {
   .about__article-paragraph__text {
     font-size: 14px;
     line-height: 21px;
+    margin-right: 8px;
   }
 }
 
@@ -544,7 +554,6 @@ body {
 
 .join-convo__comments {
   width: 100%;
-  height: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -560,19 +569,6 @@ body {
           align-items: center;
 }
 
-@media (min-width: 768px) {
-  .join-convo__comments {
-    height: 50%;
-  }
-}
-
-@media (min-width: 1200px) {
-  .join-convo__comments {
-    width: 75%;
-    height: 37.5%;
-  }
-}
-
 .join-convo__comments .comment-form {
   border-bottom: solid 2px #E1E1E1;
   margin: 16px 0px;
@@ -583,17 +579,142 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  min-width: 285px;
+  max-width: 485px;
 }
 
 .join-convo__comments .comment-form__image {
   height: 48px;
   width: 48px;
   border-radius: 25px;
-  background-color: #E1E1E1;
 }
 
-.join-convo__comments .comment-form .form {
+.join-convo__comments .comment-form .form-input {
   margin-left: 16px;
+}
+
+.join-convo__comments .comment-form .form-input .add__comment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  color: #E1E1E1;
+  font-weight: 100;
+  font-size: 12px;
+  line-height: 20px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .join-convo__comments .comment-form .form-input .add__comment {
+    font-size: 12px;
+    line-height: 20px;
+  }
+}
+
+.join-convo__comments .comment-form .form-input .add__comment input.user__name {
+  margin: 4px 0px;
+  width: 100%;
+  border: 1px solid #323232;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.join-convo__comments .comment-form .form-input .add__comment .user__name::-webkit-input-placeholder {
+  color: #323232;
+  font-size: 12px;
+  line-height: 20px;
+  font-family: "Avenir Next";
+}
+
+.join-convo__comments .comment-form .form-input .add__comment .user__name:-ms-input-placeholder {
+  color: #323232;
+  font-size: 12px;
+  line-height: 20px;
+  font-family: "Avenir Next";
+}
+
+.join-convo__comments .comment-form .form-input .add__comment .user__name::-ms-input-placeholder {
+  color: #323232;
+  font-size: 12px;
+  line-height: 20px;
+  font-family: "Avenir Next";
+}
+
+.join-convo__comments .comment-form .form-input .add__comment .user__name::placeholder {
+  color: #323232;
+  font-size: 12px;
+  line-height: 20px;
+  font-family: "Avenir Next";
+}
+
+.join-convo__comments .comment-form .form-input .add__comment .comment-content {
+  width: 100%;
+  margin: 4px 0px;
+  padding: 5px;
+  font-family: "Avenir Next";
+  border: 1px solid #E1E1E1;
+  border-radius: 5px;
+}
+
+.join-convo__comments .comment-form .form-input .add__comment .comment-content::-webkit-input-placeholder {
+  color: #323232;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.join-convo__comments .comment-form .form-input .add__comment .comment-content:-ms-input-placeholder {
+  color: #323232;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.join-convo__comments .comment-form .form-input .add__comment .comment-content::-ms-input-placeholder {
+  color: #323232;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.join-convo__comments .comment-form .form-input .add__comment .comment-content::placeholder {
+  color: #323232;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.join-convo__comments .comment-form .form-input .add__comment .submit-container {
+  margin: 8px 0px 16px 0px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.join-convo__comments .comment-form .form-input .add__comment .submit-container .button {
+  width: 100%;
+  margin-top: 24px;
+  background: #323232;
+  color: #FFF;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  padding: 15px 5px;
+  cursor: pointer;
 }
 
 .join-convo__comments .comment {
@@ -612,7 +733,6 @@ body {
   height: 48px;
   width: 48px;
   border-radius: 25px;
-  background-color: #E1E1E1;
 }
 
 .join-convo__comments .comment__text {

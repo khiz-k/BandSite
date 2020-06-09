@@ -193,6 +193,7 @@ body {
     &__quote {
         font-family: $global-font__bold;
         width: 100%;
+        margin: 16px 0px;
         @include h3-text-style;
        
         @include tablet {
@@ -202,6 +203,7 @@ body {
         &-author {
             font-family: $global-font__demi-bold;
             @include h4-text-style;
+            margin: 16px 0px;
 
             @include tablet {
                 font-family: $global-font;
@@ -212,10 +214,12 @@ body {
     
     &__article {
         width: 100%;
+        margin: auto;
 
         &-title {
             @include h3-text-style;
             font-family: $global-font__bold;
+            margin-top: 16px;
 
             @include tablet {
                 @include tablet-h3-text;
@@ -224,6 +228,7 @@ body {
         }
 
         &-paragraph {
+            margin: 16px 0px;
       
             @include tablet {
                 display: flex; 
@@ -233,9 +238,11 @@ body {
 
             &__text {
                 @include h4-text-style;
+                margin: 8px 0px;
     
                 @include tablet {
                     @include tablet-h4-text;
+                    margin-right: 8px;
                 }
             }
         }
@@ -341,34 +348,88 @@ body {
 
     &__comments {
         width: 100%;
-        height: 50%;
         @include column-flex-center;
-
-        @include tablet {
-            height: 50%;
-        }
-    
-        @include desktop {
-            width: 75%;
-            height: 37.5%;
-        }   
 
         .comment-form {
             border-bottom: solid 2px #E1E1E1;
             margin: 16px 0px;
             display: flex;
             flex-direction: row;
+            justify-content: center;
+            width: 100%;
+            min-width: 285px;
+            max-width: 485px;
+
 
             &__image {
                 height: 48px;
                 width: 48px;
                 border-radius: 25px;
-                background-color: #E1E1E1;
             }
 
-            .form {
+            .form-input {
                 margin-left: 16px;
                 
+                .add__comment {
+                    @include column-flex-start;
+                    color: #E1E1E1;
+                    font-weight: 100;  
+                    @include h5-text-style;
+                    width: 100%;
+
+                    @include tablet {
+                        @include tablet-h5-text;
+                    }
+
+                
+                    input.user__name {
+                        margin: 4px 0px;
+                        width: 100%;
+                        border: 1px solid #323232;
+                        border-radius: 5px;
+                        padding: 5px;
+                    }
+
+                    .user__name::placeholder{
+                        color: #323232;
+                        @include h5-text-style;
+                        font-family: $global-font;
+
+                    }
+
+                    .comment-content {
+                        width: 100%;
+                        margin: 4px 0px;
+                        padding: 5px;
+                        font-family: $global-font;
+                        border: 1px solid #E1E1E1;
+                        border-radius: 5px;
+                    }
+
+                    .comment-content::placeholder {
+                        color: #323232;
+                        @include h5-text-style;
+                    }
+
+                    .submit-container{
+                        margin: 8px 0px 16px 0px;
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+
+                        .button {
+                            width: 100%;
+                            margin-top: 24px;
+                            background: #323232;
+                            color: #FFF;
+                            text-transform: uppercase;
+                            border: none;
+                            border-radius: 4px;
+                            padding: 15px 5px;
+                            cursor: pointer;
+                        }
+                    }
+                }
             }
         }
 
@@ -382,7 +443,6 @@ body {
                 height: 48px;
                 width: 48px;
                 border-radius: 25px;
-                background-color: #E1E1E1;
             }
 
             &__text {
