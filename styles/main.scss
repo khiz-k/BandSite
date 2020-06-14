@@ -18,6 +18,8 @@ body {
     width: 100%;
     height: 80px;
     top: 0;
+    position: fixed;
+    z-index: 1;
     @include column-flex-center;
 
     @include tablet {
@@ -35,15 +37,15 @@ body {
         @include flex-center;
 
         @include tablet {
-            height: 100%;
             width: 25%;
+            height: 100%;
         }
 
         @include desktop {
             width: 15%;
         }
     
-        &-image {
+        &__image {
             height: 1.25rem;
         }
     }
@@ -52,6 +54,10 @@ body {
         color: #E1E1E1;
         text-decoration: none;
         @include flex-center;
+        
+        &:hover {
+            color: #323232;
+        }
 
         &--active {
             color: #FFFFFF;
@@ -65,8 +71,8 @@ body {
         justify-content: space-evenly;
 
         @include tablet {
-            height: 100%;
             width: 33%;
+            height: 100%;
             align-self: flex-end;
         }
 
@@ -75,14 +81,22 @@ body {
             padding-left: 28px;
         }
     
-        .nav-bar__item {
+        &__item {
             width: 50%;
             display: flex;
             justify-content: center;
 
+            &:hover {
+                background-color: #FFFFFF;
+            }
+
             &--active {
                 border-bottom: solid 3px #FFFFFF;
-            }
+
+                &:hover {
+                    border-bottom: solid 3px #8B0000;
+                }
+            }  
         }    
     }  
 }
@@ -91,6 +105,7 @@ body {
 .page-title {
     width: 100%;
     height: 183px;
+    margin-top: 80px;
     background:
     linear-gradient(
         rgba(0, 0, 0, 0.5), 
@@ -119,12 +134,12 @@ body {
 
         @include tablet {
             @include tablet-h1-text;
-            padding-left: 24px;
+            margin-left: 24px;
         }
     
         @include desktop {
             @include desktop-hero-text;
-            padding-left: 180px;
+            margin-left: 180px;
         }
     }
 }
@@ -135,37 +150,37 @@ body {
     background-color: $about-background;
     @include column-flex-center;
     @include standard-padding;
-    padding-bottom: 16px;
 
     @include tablet {
         @include tablet-padding;
-        padding-bottom: 24px;
+      
     }
 
     @include desktop {
         @include desktop-padding;
-        padding-bottom: 48px;
+        
     }
 
     &__title {
         font-family: $global-font__bold;
         align-self: flex-start;
-        margin: 24px 0px;
+        margin: 8px 0px;
         @include h1-text-style;
         
         @include tablet {
-            margin: 32px 0px;
             @include tablet-h1-text;
+            margin: 16px 0px;
         }
 
         @include desktop {
-            margin: 48px 0px;
+            margin: 24px 0px;
         }
     }
 
     &__info {
         width: 100%;
         height: 50%;
+        margin: 24px 0px;
   
         @include tablet {
             height: 50%;
@@ -180,7 +195,7 @@ body {
     &__image-container {
         width: 100%;
 
-        .about-image {
+        .about__image {
             width: 100%;
             height: 50%;
       
@@ -191,24 +206,33 @@ body {
     }
     
     &__quote {
-        font-family: $global-font__bold;
+        font-family: $global-font__demi-bold;
         width: 100%;
         margin: 16px 0px;
         @include h3-text-style;
        
         @include tablet {
-            @include tablet-h3-text;
+            font-family: $global-font__demi-bold;
+            @include tablet-h2-text;
+            margin: 32px 0px;
+        }
+        
+        @include desktop {
+            font-size: 22px; /*pixel perfect correct*/
+            margin: 48px 0px;
         }
 
-        &-author {
+        &__author {
             font-family: $global-font__demi-bold;
-            @include h4-text-style;
+            @include h5-text-style;
             margin: 16px 0px;
 
             @include tablet {
                 font-family: $global-font;
+                font-weight: 600;
                 @include tablet-h4-text;
-                }
+                margin: 20px 0px;
+            }
         }
     }
     
@@ -216,18 +240,17 @@ body {
         width: 100%;
         margin: auto;
 
-        &-title {
-            @include h3-text-style;
-            font-family: $global-font__bold;
-            margin-top: 16px;
+        &__title {
+            @include h2-text-style;
+            font-family: $global-font__demi-bold;
+            margin-top: 32px;
 
             @include tablet {
-                @include tablet-h3-text;
-          
+                @include tablet-h2-text;
             }
         }
 
-        &-paragraph {
+        &__paragraph {
             margin: 16px 0px;
       
             @include tablet {
@@ -242,7 +265,11 @@ body {
     
                 @include tablet {
                     @include tablet-h4-text;
-                    margin-right: 8px;
+                    margin-right: 24px;
+                }
+
+                @include desktop {
+                    margin-right: 40px;
                 }
             }
         }
@@ -255,22 +282,21 @@ body {
     background-color: $gallery-background;
     @include column-flex-center;
     @include standard-padding;
-    padding-bottom: 16px;
-
+ 
     @include tablet {
         @include tablet-padding;
-        padding-bottom: 24px;
+        padding-bottom: 16px; /*pixel perfect correct*/
     }
 
     @include desktop {
         @include desktop-padding;
-        padding-bottom: 48px;
+        padding-bottom: 40px;
     }
 
     &__title {
         font-family: $global-font__bold;
         align-self: flex-start;
-        margin: 24px 0px;
+        margin: 8px 0px;
         @include h1-text-style;
         
         @include tablet {
@@ -298,7 +324,14 @@ body {
         width: 288px;
         height: 145px;
         display: inline-block;
-        margin: 8px;
+        margin: 16px 0px;
+        opacity: 0.8;
+        filter: grayscale(100%);
+        
+        &:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+        }
 
         @include tablet {
             width: 224px;
@@ -318,22 +351,21 @@ body {
     background-color: $about-background;
     @include column-flex-center;
     @include standard-padding;
-    padding-bottom: 16px;
 
     @include tablet {
         @include tablet-padding;
-        padding-bottom: 24px;
+        margin-bottom: 16px; /*pixel perfect correct*/
     }
 
     @include desktop {
         @include desktop-padding;
-        padding-bottom: 48px;
+        margin-bottom: 32px;
     }
 
     &__title {
         font-family: $global-font__bold;
         align-self: flex-start;
-        margin: 24px 0px;
+        margin: 8px 0px;
         @include h1-text-style;
         
         @include tablet {
@@ -350,54 +382,65 @@ body {
         width: 100%;
         @include column-flex-center;
 
-        .comment-form {
+        .comment__form-container {
             border-bottom: solid 2px #E1E1E1;
             margin: 16px 0px;
             display: flex;
             flex-direction: row;
             justify-content: center;
-            width: 100%;
-            min-width: 285px;
-            max-width: 485px;
+            min-width: 296px;
 
+            @include tablet {
+               width: 412px;
+            }
 
-            &__image {
+            @include desktop {
+                width: 528px;
+            }
+
+            .comment__form__image {
                 height: 48px;
                 width: 48px;
                 border-radius: 25px;
             }
 
-            .form-input {
-                margin-left: 16px;
+            .comment__form--input {
+                width: 100%;
+                margin-left: 16px;       
+
+                @include desktop {
+                    width: 75%;
+                    margin-left: 20px; /*as per the mockup*/
+                }
                 
-                .add__comment {
-                    @include column-flex-start;
+                .add__comment__form {
+                    width: 100%;
                     color: #E1E1E1;
                     font-weight: 100;  
+                    @include column-flex-start;
                     @include h5-text-style;
-                    width: 100%;
-
+                   
                     @include tablet {
                         @include tablet-h5-text;
                     }
 
                 
-                    input.user__name {
+                    input.username {
                         margin: 4px 0px;
                         width: 100%;
-                        border: 1px solid #323232;
+                        border: 1px solid #E1E1E1;
                         border-radius: 5px;
                         padding: 5px;
                     }
 
-                    .user__name::placeholder{
+                    #username::placeholder{
                         color: #323232;
                         @include h5-text-style;
                         font-family: $global-font;
 
                     }
 
-                    .comment-content {
+                    .comment__content {
                         width: 100%;
                         margin: 4px 0px;
                         padding: 5px;
@@ -406,7 +449,7 @@ body {
                         border-radius: 5px;
                     }
 
-                    .comment-content::placeholder {
+                    .comment__content::placeholder {
                         color: #323232;
                         @include h5-text-style;
                     }
@@ -421,7 +464,7 @@ body {
                             width: 100%;
                             margin-top: 24px;
                             background: #323232;
-                            color: #FFF;
+                            color: #FFFFFF;
                             text-transform: uppercase;
                             border: none;
                             border-radius: 4px;
@@ -433,11 +476,24 @@ body {
             }
         }
 
+        .comment-container {
+            @include column-flex-center;
+            width: 100%;
+        }
+
         .comment {
+            display: flex;
+            justify-content: flex-start;
             border-bottom: solid 2px #E1E1E1;
             margin: 16px 0px;
-            display: flex;
-            flex-direction: row;
+                width: 296px;
+
+            @include tablet {
+                width: 412px;
+            }
+            @include desktop {  
+                width: 528px;
+            }
 
             &__image {
                 height: 48px;
@@ -449,110 +505,133 @@ body {
                 margin-left: 8px;
             }
 
-            &__name {
+            &__title {
                 display: flex;
+                flex-direction: row;
                 justify-content: space-between;
-                @include h4-text-style;
 
+                @include tablet {
+                    justify-content: flex-start;
+                }
+            }
+
+            &__name {
+                @include h4-text-style;
             }
 
             &__timestamp {
                 color: #E1E1E1;
                 font-weight: 100;   
+                @include h4-text-style;
+
+                @include tablet {
+                    margin-left: 16px;
+                }
             }
 
             &__paragraph {
                 margin: 16px 0px;
                 @include h4-text-style;
-                
             }
+        }
+    }
+
+    .remove-container{
+        margin: 8px 0px 16px 0px;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+       
+        .remove-button {
+            width: 100%;
+            margin-top: 24px;
+            background: #FFFFFF;
+            color: #323232;
+            border: none; /*TEST*/
+            border-radius: 2px;
+            padding: 15px 5px;
+            cursor: pointer;
+            box-shadow: 0px 40px 32px -4px #000000;
         }
     }
 }
 
 /*footer*/
 .footer {
+    width: 100%;
     background-color: $footer-background;
     color: white;
     bottom: 0;
     @include column-flex-center;
     @include standard-padding;
-    padding-bottom: 16px;
 
     @include tablet {
         @include tablet-padding;
         flex-direction: row;
         justify-content: space-around;
-        padding-bottom: 24px;
     }
 
     @include desktop {
         @include desktop-padding;
-        padding-bottom: 48px;
     }
 
-    &-container {
-        padding: 8px 0px;
+    &__mobile-first {
+        @include tablet {
+        }
+    }
+
+    .footer-container {
+        margin: 24px 0px;
     
         @include tablet {
-            width: 100%;
             display: flex;
             flex-direction: row;
-            justify-content: flex-start;
+        }
+
+        @include desktop {
+            margin: 32px 0px;
         }
     }
     
     &__title {
         font-family: $global-font__bold;
-        margin: 24px 0px;
         @include h1-text-style;
         
         @include tablet {
-            margin: 32px 0px;
             @include tablet-h1-text;
         }
 
         @include desktop {
-            margin: 48px 0px;
         }
     }
     
     &__socials {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         width: 50%;
+        margin: 16px 0px;
 
         @include tablet {
             width: 25%;
             justify-content: space-evenly;
-            margin-top: 40px;
-        }
-
-        @include desktop {
-            margin-top: 56px;
-        }
-
-        &-anchor {
-        }
-
-        &-image {
+            margin: 0px 16px;
         }
     }
     
     &__contact {
-        padding: 8px 0px;
+        margin: 24px 0px;
 
         @include tablet {
-            padding: 16px 0px;
-            padding-right: 32px;
+            margin-right: 32px;
         }
         
         @include desktop {
-            padding: 40px 0px;
-            padding-right: 40px;
+            margin-right: 40px;
+            margin-bottom: 0px; /*pixel perfect spacing correct inbetween contact and copyright*/
         }
     
-        &-title {
+        &__title {
             @include h4-text-style;
             
             @include tablet {
@@ -560,12 +639,15 @@ body {
             }
         }
     
-        &-info {
+        &__info {
             color: #E1E1E1;
-            padding: 8px 0px;
+            margin: 8px 0px;
             @include h5-text-style;
             @include tablet {
                 @include tablet-h5-text;
+            }
+            @include desktop {
+                margin: 16px 0px;
             }
         }
     }
@@ -574,17 +656,14 @@ body {
         display: none;
 
         @include tablet {
-            height: 100%;
             display: flex;
             align-self: flex-start;
-            margin-top: 48px;
+            height: 100%;
+            margin-top: 32px;
         }
 
         @include desktop {
-            margin-top: 60px;
-        }
-
-        &-image {
+            position: static;
         }
     }
     
