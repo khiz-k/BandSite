@@ -18,11 +18,17 @@ body {
     width: 100%;
     height: 80px;
     top: 0;
+    position: fixed;
+    z-index: 1;
     @include column-flex-center;
 
     @include tablet {
         flex-direction: row;
         justify-content: flex-start;
+    }
+
+    @include desktop {
+        padding-left: 180px;
     }
 
     &__logo {
@@ -31,15 +37,15 @@ body {
         @include flex-center;
 
         @include tablet {
-            height: 100%;
             width: 25%;
+            height: 100%;
         }
 
         @include desktop {
             width: 15%;
         }
     
-        &-image {
+        &__image {
             height: 1.25rem;
         }
     }
@@ -48,6 +54,10 @@ body {
         color: #E1E1E1;
         text-decoration: none;
         @include flex-center;
+        
+        &:hover {
+            color: #323232;
+        }
 
         &--active {
             color: #FFFFFF;
@@ -61,23 +71,32 @@ body {
         justify-content: space-evenly;
 
         @include tablet {
-            height: 100%;
             width: 33%;
+            height: 100%;
             align-self: flex-end;
         }
 
         @include desktop {
             width: 25%;
+            padding-left: 28px;
         }
     
-        .nav-bar__item {
+        &__item {
             width: 50%;
             display: flex;
             justify-content: center;
 
+            &:hover {
+                background-color: #FFFFFF;
+            }
+
             &--active {
                 border-bottom: solid 3px #FFFFFF;
-            }
+
+                &:hover {
+                    border-bottom: solid 3px #8B0000;
+                }
+            }  
         }    
     }  
 }
@@ -86,6 +105,7 @@ body {
 .page-title {
     width: 100%;
     height: 300px;
+    margin-top: 80px;
     background:
     linear-gradient(
         rgba(0, 0, 0, 0.5), 
@@ -99,8 +119,8 @@ body {
 
     @include tablet {
         height: 400px;
-        align-items: flex-start;
         padding: 0px 32px;
+        align-items: flex-start;
     }
 
     @include desktop {
@@ -109,21 +129,21 @@ body {
         justify-content: space-around;
         align-items: center;
     }
-    &__info {
+    &__text {
         @include column-flex-start;
 
-        &-sub {
+        &--top {
             font-family: $global-font__bold;
             color: #FFFFFF;
             @include flex-center;
             @include h2-text-style;
 
             @include tablet {
-                @include tablet-h2-text;
+                @include tablet-h2-text; 
             }
         }
 
-        &-text {
+        &--bottom {
             font-family: $global-font__bold;
             color: #FFFFFF;
             margin: 16px 0px;
@@ -151,22 +171,21 @@ body {
     background-color: #FFFFFF;
     @include column-flex-center;
     @include standard-padding;
-    padding-bottom: 16px;
 
     @include tablet {
         @include tablet-padding;
-        padding-bottom: 24px;
+        margin-bottom: 16px; /*pixel perfect correct*/
     }
 
     @include desktop {
         @include desktop-padding;
-        padding-bottom: 48px;
+        margin-bottom: 32px;
     }
 
     &__title {
         font-family: $global-font__bold;
         align-self: flex-start;
-        margin: 24px 0px;
+        margin: 8px 0px;
         @include h1-text-style;
         
         @include tablet {
@@ -199,45 +218,54 @@ body {
                 display: flex;
                 align-items: center;
 
-                .row-title {
-                    @include h4-text-style;
-                    font-weight: normal;
-                    text-transform: uppercase;
-                    @media (max-width: 767px)/*test*/{
-                        display: none;
-                    }
-                }
                 .column{
                     flex-basis: 25%
                 }
             }
 
-            .current-data {
+            .row-title {
+                display: none;
+                color: #E1E1E1;
+                @include tablet {
+                display: flex;
+                @include h4-text-style;
+                font-weight: normal;
+                text-transform: uppercase;
+                }
+            }
 
+            .data {
                 .row {
-                    display: flex;
+                    display: block;
                     align-items: center;
-                    padding: 16px 0;
                     border-bottom: 1px solid #E1E1E1;
-                    @media (max-width: 767px)/*test*/{
-                        display: block;
+                    @include tablet{
+                        display: flex;
                     }
                     .column {
                         @include h4-text-style;
-
-                        @include tablet {
-                            @include tablet-h4-text;
-                        }
+                        margin: 16px 0px;
                         text-align: left;
                         flex-basis: 25%;
 
+                        @include tablet {
+                            @include tablet-h4-text;
+                            margin-right: 16px;
+                        }
+
+                        @include desktop {
+                            margin-right: 24px;
+                        }
+
                         .title{
                             @include h4-text-style;
+                            color: #E1E1E1;
                             font-weight: normal;
                             text-transform: uppercase;
-                            display: none;
-                            @media (max-width: 767px)/*test*/{
-                                display: block;
+                            display: block;
+                            margin: 8px 0px;
+                            @include tablet{
+                                display: none;
                             }
                         }
 
@@ -246,16 +274,18 @@ body {
                             .button {
                                 background-color: #323232;
                                 color: #FFFFFF;
-                                text-align: center;
-                                padding: 10px 20px;
+                                padding: 10px 0px;
                                 cursor: pointer;
                                 border-radius: 4px;
-                                display: inline-block;
-                                width: 160px;
-                                @media (max-width: 767px)/*test*/{
-                                    width: 100%;
-                                    padding: 10px 0;
+                                width: 75%;
+                                @include tablet {
+                                    width: 160px;
+                                    padding: 10px 20px;
                                 }
+                            }
+
+                            .button:hover {
+                                background-color: black;
                             }
                         }
                     }
@@ -268,87 +298,80 @@ body {
 
 /*footer*/
 .footer {
+    width: 100%;
     background-color: $footer-background;
     color: white;
     bottom: 0;
     @include column-flex-center;
     @include standard-padding;
-    padding-bottom: 16px;
 
     @include tablet {
         @include tablet-padding;
         flex-direction: row;
         justify-content: space-around;
-        padding-bottom: 24px;
     }
 
     @include desktop {
         @include desktop-padding;
-        padding-bottom: 48px;
     }
 
-    &-container {
-        padding: 8px 0px;
+    &__mobile-first {
+        @include tablet {
+        }
+    }
+
+    .footer-container {
+        margin: 24px 0px;
     
         @include tablet {
-            width: 100%;
             display: flex;
             flex-direction: row;
-            justify-content: flex-start;
+        }
+
+        @include desktop {
+            margin: 32px 0px;
         }
     }
     
     &__title {
         font-family: $global-font__bold;
-        margin: 24px 0px;
         @include h1-text-style;
         
         @include tablet {
-            margin: 32px 0px;
             @include tablet-h1-text;
         }
 
         @include desktop {
-            margin: 48px 0px;
         }
     }
     
     &__socials {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         width: 50%;
+        margin: 16px 0px;
 
         @include tablet {
             width: 25%;
             justify-content: space-evenly;
-            margin-top: 40px;
-        }
-
-        @include desktop {
-            margin-top: 56px;
-        }
-
-        &-anchor {
-        }
-
-        &-image {
+            margin: 0px 16px;
         }
     }
     
     &__contact {
-        padding: 8px 0px;
+        margin: 24px 0px;
 
         @include tablet {
-            padding: 16px 0px;
-            padding-right: 32px;
+            margin-right: 32px;
         }
         
         @include desktop {
-            padding: 40px 0px;
-            padding-right: 40px;
+            margin-right: 40px;
+            margin-bottom: 0px; /*pixel perfect spacing correct inbetween contact and copyright*/
         }
     
-        &-title {
+        &__title {
             @include h4-text-style;
             
             @include tablet {
@@ -356,12 +379,15 @@ body {
             }
         }
     
-        &-info {
+        &__info {
             color: #E1E1E1;
-            padding: 8px 0px;
+            margin: 8px 0px;
             @include h5-text-style;
             @include tablet {
                 @include tablet-h5-text;
+            }
+            @include desktop {
+                margin: 16px 0px;
             }
         }
     }
@@ -370,17 +396,14 @@ body {
         display: none;
 
         @include tablet {
-            height: 100;
             display: flex;
             align-self: flex-start;
-            margin-top: 48px;
+            height: 100%;
+            margin-top: 32px;
         }
 
         @include desktop {
-            margin-top: 60px;
-        }
-
-        &-image {
+            position: static;
         }
     }
     
