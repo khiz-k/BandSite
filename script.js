@@ -1,60 +1,139 @@
-//Comments
-let commentArray = [];
-function top(){
-	
-	commentArray[0] = { name:"Theodore Duncan", date:"11/15/2018", comment: "How can someone be so good!!! You can tell he lives for this and loves to do it every day. Everytime I see him I feel instantly happy! He’s definitely my favorite ever!" };
-	commentArray[1] = { name:"Gary Wong", date:"12/12/2018", comment: "Every time I see him shred I feel so motivated to get off my couch and hop on my board. He’s so talented! I wish I can ride like him one day so I can really enjoy myself!"};
-	commentArray[2] = { name:"Micheal Lyons", date:"12/18/2018", comment: "They BLEW the ROOF off at their last show, once everyone started figuring out they were going. This is still simply the greatest opening of a concert I have EVER witnessed." };
+/* Comments*/
 
-	//.each(function( index ) {
-	//		displayComment(this);
-	//});
+// Globals and Back-End API 
+const url = "https://project-1-api.herokuapp.com/comments?api_key="; 
+let API_KEY = "d9170aaf-154f-4f77-af32-cb4f16a4441e";
+
+// let commentObject = {name: nameValue, timestamp: new Date(), comment: commentValue};
+// let commentsArray = [];
+
+// Get request for default comments
+getComments = () => {
+    axios.get(url + API_KEY)
+        .then(res => {
+        console.log(res.data)
+        // forEach to run through all the data
+        res.data.forEach(commentObject => {
+            // display each obj
+            displayComment(commentObject);
+        })
+        })
+        // catch errors
+        .catch(err => {
+            console.log(err);
+        })
+};
+// Invocation of get request
+getComments ();
+
+//Form DOM
+const form = document.querySelector('#add__comment__form');
+
+//created a function that will be a callback to the addEventListener
+const selectForm = (e) => {
+    // prevents the page from refreshing
+    e.preventDefault();
+    // name entered
+    nameValue = e.target.userName.value; // fix
+    // comment value entered
+    commentValue = e.target.userComment.value;
+    console.log(nameValue);
+    console.log(commentValue);
+    let commentObject = {name: nameValue, timestamp: new Date(), comment: commentValue};
+    displayComment(commentObject);
+    // resets form fields
+    form.reset();
 };
 
-document.getElementById("post_comment").addEventListener("click", add_comment);
+//invoke the 'addEventListener' function passing 'submit' type
+form.addEventListener("submit", selectForm);
 
-function add_comment(e){
-	e.preventDefault();
+// Post request for new comments
+postComments = () => {
+    axios.post(url + API_KEY)
+        .then(res => {
+        console.log(res.data)
+        // forEach to run through all the data
+        res.data.forEach(commentObject => {
+            // display each obj
+            displayComment(commentObject);
+        })
+        })
+        // catch errors
+        .catch(err => {
+            console.log(err);
+        })
+};
+// Invocation of post request
+postComments ();
 
-	//Current date
-	let d = new Date();
-	let month = d.getMonth()+1;
-	let day = d.getDate();
+// Display on to the page
+const displayComment = (commentObject) => {
+  
+    // Find comment container that holds all comments
+    let commentContainer = document.querySelector(".comment-container");
 
-	let output = ((''+month).length<2 ? '0' : '') + month + '/' +
-	    ((''+day).length<2 ? '0' : '') + day + '/' +d.getFullYear();
+    // Create a comment block to harbour the comment image and text
+    let commentBlock = document.createElement("div");
+    commentBlock.setAttribute("class", "comment");
 
-	//let userName = ${"#user_name"};
-	//let userComment = ${"#comment"};
+    // Create a comment image element to display user pic
+    let commentImage = document.createElement("img");
+    // Do I need to replace the img url with object key img?
+    commentImage.setAttribute("src", "assets/images/default-comment-image.jpg");
+    commentImage.setAttribute("class", "comment__image");
+    commentImage.setAttribute("alt", "Default Comment Image");
+    
+    // Create a comment text div to take in the different comment text elements
+    let commentText = document.createElement("div");
+    commentText.setAttribute("class", "comment__text");
 
-	let comment = {name: userName, date: output, comment: userComment};
+    // Create comment title div to take in the username and timestamp
+    let commentTitle = document.createElement("div");
+    commentTitle.setAttribute("class", "comment__title");
 
-	commentArray.push(comment);
+    // Create user header element for top of the comment
+    let userNameText = document.createElement('h5')
+    userNameText.setAttribute("class", "comment__name");
+    userNameText.innerText = `${commentObject.name}`;
 
-	//.html("");
+    // Create timestamp header element for the top of the comment
+    let commentTimestamp = document.createElement("h5");
+    commentTimestamp.setAttribute("class", "comment__timestamp");
+    let currentDate = `${commentObject.timestamp}`;
+    
 
-	//.each(function( index ) {
-	//	displayComment(this);
-	//});
+    // Format date to time ago
+    let currentDateFormatted = currentDate;
 
-	//.trigger("reset");
-}
 
-function displayComment(comment){
-	let comment = '<div class="comment-item"><div class="pic-wrap"><div class="pic no-pic"></div></div><div class="comment-text"><div class="name-date-wrap"><span class="name">'+comment.name+'</span><span class="date">'+comment.date+'</span></div>'+comment.comment+'</div></div></div>';
-	//.prepend(comment);
-}
+    commentTimestamp.innerText = currentDateFormatted;
+    
+    // Append username and timestamp within title to head the comment
+    commentTitle.append(userNameText, commentTimestamp);
 
-//Shows Table
-document.ready(function(){
-	let rows_array = [];
-	rows_array[0] = {date:"Mon Dec 17 2018", venue:"Ronald Lane", location: "San Fancisco, CA"};
-	rows_array[1] = {date:"Tue Jul 18 2019", venue:"Pier 3 East", location: "San Fancisco, CA"};
-	rows_array[2] = {date:"Fri Jul 22 2019", venue:"View Loungue", location: "San Fancisco, CA"};
-	rows_array[3] = {date:"Sat Aug 12 2019", venue:"Hyatt Agency", location: "San Fancisco, CA"};
+    // Create paragraph element to hold comment value
+    let commentParagraph = document.createElement("p");
+    commentParagraph.setAttribute("class", "comment__paragraph");
+    commentParagraph.innerText = `${commentObject.comment}`;
 
-	rows_array.each(function( index ) {
-		let row = '<div class="row"><div class="column"><div class="title">Dates</div><div class="content date">'+this.date+'</div></div><div class="column"><div class="title">Venue</div><div class="content venue">'+this.venue+'</div></div><div class="column"><div class="title">Location</div><div class="content location">'+this.location+'</div></div><div class="column"><div class="content action"><div class="btn">Buy Tickets</div></div></div></div>'
-		//.append(row);
-	});
-});
+    // Append comment title and paragraph to complete the text of the comment
+    commentText.append(commentTitle, commentParagraph);
+
+    // Append comment image and text within the block to complete a full comment
+    commentBlock.append(commentImage, commentText);
+
+    // Prepend the block to the container so new comments show on top
+    commentContainer.prepend(commentBlock);
+
+    // Create the remove button container
+    let buttonContainer = document.createElement("div");
+    buttonContainer.setAttribute("class","remove-container");
+    
+    // Create the remove button for its container
+    let button = document.createElement("button");
+    button.setAttribute("class","remove-button");
+    button.innerText = `Remove`;
+    buttonContainer.appendChild(button);
+ 
+};

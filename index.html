@@ -16,25 +16,23 @@
                     <a href="index.html" class="nav-bar__anchor">
                         <img 
                             src="assets/logo/Logo-bandsite.svg" 
-                            class="nav-bar__logo-image" 
+                            class="nav-bar__logo__image" 
                             alt="BandSite Logo"
                         >
                     </a>
                 </div>
                 <ul class="nav-bar__list">
-                    <li class="nav-bar__item nav-bar__item--active">
+                    <li class="nav-bar__list__item nav-bar__list__item--active">
                         <a href="index.html" class="nav-bar__anchor nav-bar__anchor--active">Biography</a>
                     </li>
-                    <li class="nav-bar__item">
+                    <li class="nav-bar__list__item">
                         <a href="pages/shows.html" class="nav-bar__anchor">Shows</a>
                     </li>
                 </ul>
             </nav>
             <!--title-->
             <section class="page-title">
-                <h1 class="page-title__text">Gaspard Auge &
-                    <br>Xavier de Rosnay
-                </h1>
+                <h1 class="page-title__text">Gaspard Auge &<br>Xavier de Rosnay</h1>
             </section> 
         </header>
         <main>
@@ -45,20 +43,19 @@
                     <div class="about__image-container">
                         <img 
                             src="assets/images/about-image.jpg"
-                            class="about-image"   
+                            class="about__image"   
                             alt="Band Image"
                         >   
                     </div>
                     <article class="about__quote">
-                        <h3>“We are more comfortable with not ﬁghting what comes naturally. Before we might have thought, ‘We need to be smarter than this’”
-                        </h3>
-                        <h4 class="about__quote-author">- Xavier de Rosnay</h4>
+                        <h3>“We are more comfortable with not ﬁghting what comes naturally. Before we might have thought, ‘We need to be smarter than this’”</h3>
+                        <h4 class="about__quote__author">- Xavier de Rosnay</h4>
                     </article>
                     <article class="about__article">
-                        <h3 class="about__article-title">Xavier de Rosnay & Gaspard Augé</h3>
-                        <div class="about__article-paragraph">
-                            <h4 class="about__article-paragraph__text">Xavier De Ronsay and Gaspard Augé had a few mutual friends, who happened to run a record label, seeking tracks for a compilation. With an immediate connection, the pair decided to try their hand at making a song. That’s when they created their breakout single, We Are Your Friends – a feel-good, funk-ﬁlled, instant anthem that lost the remix contest, but won the attention of Pedro Winter, director of the newly founded Ed Banger Records, who boasted Daft Punk as former clients. One week later, they were in his ofﬁce, signing a record deal</h4>
-                            <h4 class="about__article-paragraph__text">Xavier De Ronsay and Gaspard Augé had a few mutual friends, who happened to run a record label, seeking tracks for a compilation. With an immediate connection, the pair decided to try their hand at making a song. That’s when they created their breakout single, We Are Your Friends – a feel-good, funk-ﬁlled, instant anthem that lost the remix contest, but won the attention of Pedro Winter, director of the newly founded Ed Banger Records, who boasted Daft Punk as former clients. One week later, they were in his ofﬁce, signing a record deal</h4>
+                        <h3 class="about__article__title">Xavier de Rosnay & Gaspard Augé</h3>
+                        <div class="about__article__paragraph">
+                            <h4 class="about__article__paragraph__text">Xavier De Ronsay and Gaspard Augé had a few mutual friends, who happened to run a record label, seeking tracks for a compilation. With an immediate connection, the pair decided to try their hand at making a song. That’s when they created their breakout single, We Are Your Friends – a feel-good, funk-ﬁlled, instant anthem that lost the remix contest, but won the attention of Pedro Winter, director of the newly founded Ed Banger Records, who boasted Daft Punk as former clients. One week later, they were in his ofﬁce, signing a record deal</h4>
+                            <h4 class="about__article__paragraph__text">Xavier De Ronsay and Gaspard Augé had a few mutual friends, who happened to run a record label, seeking tracks for a compilation. With an immediate connection, the pair decided to try their hand at making a song. That’s when they created their breakout single, We Are Your Friends – a feel-good, funk-ﬁlled, instant anthem that lost the remix contest, but won the attention of Pedro Winter, director of the newly founded Ed Banger Records, who boasted Daft Punk as former clients. One week later, they were in his ofﬁce, signing a record deal</h4>
                         </div>
                     </article>
                 </div>
@@ -82,77 +79,48 @@
             <section class="join-convo">
                 <h2 class="join-convo__title">Join the Conversation</h2>
                 <div class="join-convo__comments">
-                    <div class="comment-form">
-                        <img src="assets/images/Mohan-muruge.jpg" class="comment-form__image" alt="Comment Form Image">
-                        <div class="form-input">
-                            <form name="add__comment" class="add__comment" id="add__comment" action="">
-                                <label for="username">Name</label>
-                                <input type="text" name="user_name" class="user__name" id="user__name" placeholder="Enter your name" required="true">
-                                <label for="comment">Comment</label>
-                                <textarea name="user_comment" class="comment-content" id="comment-content" placeholder="Add a new comment" required="true"></textarea> 
+                    <div class="comment__form-container">
+                        <img src="assets/images/Mohan-muruge.jpg" class="comment__form__image" alt="Comment Form Image">
+                        <div class="comment__form--input">
+                            <form name="addComment" class="add__comment__form" id="add__comment__form" action="" type="reset">
+                                <label for="user__name" class="label-text">Name</label>
+                                <input type="text" name="userName" class="username" id="username" placeholder="Enter your name" required="true">
+                                <label for="comment-content" class="label-text">Comment</label>
+                                <textarea name="userComment" class="comment__content" id="comment__content" placeholder="Add a new comment" required="true"></textarea> 
                                 <div class="submit-container">
-                                    <input type="button" name="post__comment" class="button" id="button" value="comment">
+                                    <input type="submit" name="postComment" class="button" id="button" value="comment">
                                 </div>
                             </form>
                         </div>
-                    </div>   
-                    <div class="comment">
-                        <img src="assets/images/default-comment-image.jpg" class="comment__image" alt="Default Comment Image">
-                        <div class="comment__text">
-                            <h5 class="comment__name">Micheal Lyons<span class="comment__timestamp"> 12/18/2018</span></h5>
-                            <p class="comment__paragraph">They BLEW the ROOF off at their last show, once everyone started 
-                                <br>ﬁguring out they were going. This is still simply the greatest opening of a 
-                                <br>concert I have EVER witnessed.
-                            </p>
-                        </div>
                     </div>
-                    <div class="comment">
-                        <img src="assets/images/default-comment-image.jpg" class="comment__image" alt="Default Comment Image">
-                        <div class="comment__text">
-                            <h5 class="comment__name">Gary Wong<span class="comment__timestamp"> 12/12/2018</span></h5>
-                            <p class="comment__paragraph">Every time I see him shred I feel so motivated to get off my couch and 
-                                <br>hop on my board. He’s so talented! I wish I can ride like him one day so I  
-                                <br>can really enjoy myself!
-                            </p>
-                        </div>
-                    </div>
-                    <div class="comment">
-                        <img src="assets/images/default-comment-image.jpg" class="comment__image" alt="Default Comment Image">
-                        <div class="comment__text">
-                            <h5 class="comment__name">Theodore Duncan<span class="comment__timestamp"> 11/15/2018</span></h5>
-                            <p class="comment__paragraph">How can someone be so good!!! You can tell he lives for this and loves 
-                                <br>to do it every day. Everytime I see him I feel instantly happy! He’s 
-                                <br>definitely my favorite ever!
-                            </p>
-                        </div>
-                    </div>
+                    <div class="comment-container"></div>
                 </div>
             </section>
         </main>    
         <!--footer-->
         <footer class="footer">
-            <div class="mobile-first__footer">
+            <div class="footer__mobile-first">
                 <div class="footer-container">
                     <h2 class="footer__title">Get In Touch</h2>
                     <div class="footer__socials">
-                        <a href="https://www.instagram.com" class="footer__socials-anchor">
+                        <a href="https://www.instagram.com" class="footer__socials__anchor">
                             <img 
                             src="assets/icons/SVG/Icon-instagram.svg" 
-                            class="footer__socials-image" 
+                            class="footer__socials__image" 
                             alt="Instagram Logo"
                             >
                         </a>
-                        <a href="https://www.facebook.com" class="footer__socials-anchor">
+                        <a href="https://www.facebook.com" class="footer__socials__anchor">
                             <img 
                             src="assets/icons/SVG/Icon-facebook.svg" 
-                            class="footer__socials-image" 
+                            class="footer__socials__image" 
                             alt="Facebook Logo"
                             >
                         </a>
-                        <a href="https://www.twitter.com" class="footer__socials-anchor">
+                        <a href="https://www.twitter.com" class="footer__socials__anchor">
                             <img 
                             src="assets/icons/SVG/Icon-twitter.svg" 
-                            class="footer__socials-image"  
+                            class="footer__socials__image"  
                             alt="Twitter Logo"
                             >
                         </a>
@@ -160,31 +128,19 @@
                 </div>
                 <div class="footer-container">
                     <article class="footer__contact">
-                        <h4 class="footer__contact-title">Richard Rovner
-                            <br>The Bees Knees Management
-                        </h4>
-                        <h5 class="footer__contact-info">460 King Street West
-                            <br>Toronto, Ontario M5V 1L7
-                        </h5>
-                        <h5 class="footer__contact-info">info@thebeesknees.com</h5>
+                        <h4 class="footer__contact__title">Richard&nbsp;Rovner<br>The&nbsp;Bees&nbsp;Knees&nbsp;Management</h4>
+                        <h5 class="footer__contact__info">460 King Street West<br>Toronto, Ontario M5V 1L7</h5>
+                        <h5 class="footer__contact__info">info@thebeesknees.com</h5>
                     </article>
                     <article class="footer__contact">
-                        <h4 class="footer__contact-title">Marsha Vlasic
-                            <br>Artist Group International
-                        </h4>
-                        <h5 class="footer__contact-info">Booking Agent for
-                            <br>US / South America / Japan
-                        </h5>
-                        <h5 class="footer__contact-info">marsha.vlasic@artistgrp.com</h5>
+                        <h4 class="footer__contact__title">Marsha&nbsp;Vlasic<br>Artist&nbsp;Group&nbsp;International</h4>
+                        <h5 class="footer__contact__info">Booking Agent for<br>US / South America / Japan</h5>
+                        <h5 class="footer__contact__info">marsha.vlasic@artistgrp.com</h5>
                     </article>
                     <article class="footer__contact">
-                        <h4 class="footer__contact-title">Russel Warby
-                            <br>William Morrir Entertainment
-                        </h4>
-                        <h5 class="footer__contact-info">Booking Agent for
-                            <br>UK / EU / AU
-                        </p>
-                        <h5 class="footer__contact-info">RLW@wmeentertainment.com</h5>
+                        <h4 class="footer__contact__title">Russel&nbsp;Warby<br>William&nbsp;Morrir&nbsp;Entertainment</h4>
+                        <h5 class="footer__contact__info">Booking Agent for<br>UK / EU / AU</h5>
+                        <h5 class="footer__contact__info">RLW@wmeentertainment.com</h5>
                     </article>
                 </div>
                 <div class="footer-container">
@@ -194,11 +150,12 @@
             <div class="footer__logo">
                 <img 
                 src="assets/logo/Logo-bandsite.svg" 
-                class="footer__logo-image" 
+                class="footer__logo__image" 
                 alt="BandSite Logo"
                 >
             </div>
         </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
         <script src="script.js"></script>
     </body>
 </html>
