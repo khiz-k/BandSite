@@ -19,17 +19,17 @@
     }
 }
 
-/*paddings*/
+/*general paddings*/
 @mixin standard-padding {
-    padding: 0 16px;
+    padding: 24px 16px;
 }
 
 @mixin tablet-padding {
-    padding: 0 24px;
+    padding: 24px 24px;
 }
 
 @mixin desktop-padding {
-    padding: 0 180px;
+    padding: 24px 180px;
 }
 
 /*flex orientations*/
