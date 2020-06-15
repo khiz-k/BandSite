@@ -537,21 +537,19 @@ body {
     }
 
     .remove-container{
-        margin: 8px 0px 16px 0px;
         width: 100%;
-        display: flex;
-        justify-content: flex-start;
-       
+        margin: 24px 0px;
+        
         .remove-button {
-            width: 100%;
-            margin-top: 24px;
+            width: 75%;
+            max-width: 200px;
             background: #FFFFFF;
             color: #323232;
-            border: none; /*TEST*/
             border-radius: 2px;
-            padding: 15px 5px;
             cursor: pointer;
-            box-shadow: 0px 40px 32px -4px #000000;
+            box-shadow: 0px 10px 8px -4px #000000;
+            padding: 8px 0px;
+            
         }
     }
 }
