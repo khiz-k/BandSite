@@ -66,7 +66,6 @@ postComments = (userName, userComment) => {
     })
         .then(res => {
         console.log(res.data)
-        // forEach to run through all the dats
         })
         // catch errors
         .catch(err => {
@@ -128,40 +127,43 @@ const displayComment = (commentObject) => {
     // Append comment title and paragraph to complete the text of the comment
     commentText.append(commentTitle, commentParagraph);
 
+    /* DIVING DEEPER - DELETE COMMENTS - */
+
+    // Create the remove button container
+    let buttonContainer = document.createElement("div");
+    buttonContainer.setAttribute("class","remove-container");
+    
+    // Create the remove button
+    let button = document.createElement("button");
+    button.setAttribute("type","submit");
+    button.setAttribute("name","removeComment");
+    button.setAttribute("class","remove-button");
+    button.setAttribute("id","remove-button");
+    button.innerText = `Remove`;
+
+    // Append remove button to its container
+    buttonContainer.appendChild(button); 
+
+    commentText.append(buttonContainer);
+
     // Append comment image and text within the block to complete a full comment
     commentBlock.append(commentImage, commentText);
 
-    // Prepend the block to the container so new comments show on top
+    // Prepend the block to the container to finish up (new comments show on top)
     commentContainer.prepend(commentBlock);
-
-    /* DIVING DEEPER - DELETE COMMENTS - */
-
-    // // Create the remove button container
-    // let buttonContainer = document.createElement("div");
-    // buttonContainer.setAttribute("class","remove-container");
-    
-    // // Create the remove button
-    // let button = document.createElement("button");
-    // button.setAttribute("type","submit");
-    // button.setAttribute("name","removeComment");
-    // button.setAttribute("class","remove-button");
-    // button.setAttribute("id","remove-button");
-    // button.innerText = `Remove`; // or button.setAttribute("value", "Remove")
-
-    // // Append remove button to its container
-    // buttonContainer.appendChild(button); 
 };
 
-// // Delete request for new comments
-// deleteComments = () => {
-//     axios.delete("https://project-1-api.herokuapp.com/comments/:commentID?api_key=" + API_KEY)
+// Delete request for new comments
+// deleteComments = (commentId) => {
+//     axios.delete("https://project-1-api.herokuapp.com/comments/:commentID?api_key=" + API_KEY, {
+//         id: commentId 
+//     })
 //         .then(res => {
 //         console.log(res.data)
 //         // forEach to run through all the data
-//         res.data.forEach(commentObject => {
-//             // delete each obj
-//             displayComment(commentObject);
-//         })
+//         // res.data.forEach(commentObject => {
+//         //     displayComment(commentObject);
+//         // })
 //         })
 //         // catch errors
 //         .catch(err => {
