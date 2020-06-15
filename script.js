@@ -24,50 +24,55 @@ getComments = () => {
         })
 };
 // Invocation of get request
-getComments ();
+getComments();
 
 //Form DOM
 const form = document.querySelector('#add__comment__form');
 
-//created a function that will be a callback to the addEventListener
+// Create a function that will be a callback to the addEventListener
 const selectForm = (e) => {
     // prevents the page from refreshing
     e.preventDefault();
-    // name entered
+    // name value entered
     nameValue = e.target.userName.value; // fix
     // comment value entered
     commentValue = e.target.userComment.value;
+    // check/verification
     console.log(nameValue);
     console.log(commentValue);
-    let commentObject = {name: nameValue, timestamp: new Date(), comment: commentValue};
+    let commentObject = {name: nameValue, timestamp: Date.now(), comment: commentValue};
+    // ^ could use new Date() for timestamp, but will be formatted to time ago regardless
+
+    // Display inputted comment
     displayComment(commentObject);
+    // Invocation of post request
+    postComments(commentObject);
     // resets form fields
     form.reset();
 };
 
-//invoke the 'addEventListener' function passing 'submit' type
+//invoke 'addEventListener' on form, passing 'submit' type
 form.addEventListener("submit", selectForm);
 
 // Post request for new comments
-postComments = () => {
-    axios.post(url + API_KEY)
+postComments = (commentObject) => {
+    axios.post(url + API_KEY, {
+        name: "",
+        comment: ""
+    })
         .then(res => {
         console.log(res.data)
-        // forEach to run through all the data
-        res.data.forEach(commentObject => {
-            // display each obj
-            displayComment(commentObject);
-        })
+        // forEach to run through all the dats
         })
         // catch errors
         .catch(err => {
             console.log(err);
         })
 };
-// Invocation of post request
-postComments ();
+// // Invocation of post request
+// postComments();
 
-// Display on to the page
+// Display on to the page function
 const displayComment = (commentObject) => {
   
     // Find comment container that holds all comments
@@ -100,15 +105,18 @@ const displayComment = (commentObject) => {
     // Create timestamp header element for the top of the comment
     let commentTimestamp = document.createElement("h5");
     commentTimestamp.setAttribute("class", "comment__timestamp");
-    let currentDate = `${commentObject.timestamp}`;
+    let objDate = `${commentObject.timestamp}`;
+    // Format Date
+    
+    // Time ago format
+
+    // Set to new variable
+    let dateFormatted = objDate;
+    // Add date to timestamp
+    commentTimestamp.innerText = dateFormatted;
     
 
-    // Format date to time ago
-    let currentDateFormatted = currentDate;
 
-
-    commentTimestamp.innerText = currentDateFormatted;
-    
     // Append username and timestamp within title to head the comment
     commentTitle.append(userNameText, commentTimestamp);
 
@@ -126,14 +134,39 @@ const displayComment = (commentObject) => {
     // Prepend the block to the container so new comments show on top
     commentContainer.prepend(commentBlock);
 
-    // Create the remove button container
-    let buttonContainer = document.createElement("div");
-    buttonContainer.setAttribute("class","remove-container");
+    /* DIVING DEEPER - DELETE COMMENTS - */
+
+    // // Create the remove button container
+    // let buttonContainer = document.createElement("div");
+    // buttonContainer.setAttribute("class","remove-container");
     
-    // Create the remove button for its container
-    let button = document.createElement("button");
-    button.setAttribute("class","remove-button");
-    button.innerText = `Remove`;
-    buttonContainer.appendChild(button);
- 
+    // // Create the remove button
+    // let button = document.createElement("button");
+    // button.setAttribute("type","submit");
+    // button.setAttribute("name","removeComment");
+    // button.setAttribute("class","remove-button");
+    // button.setAttribute("id","remove-button");
+    // button.innerText = `Remove`; // or button.setAttribute("value", "Remove")
+
+    // // Append remove button to its container
+    // buttonContainer.appendChild(button); 
 };
+
+// // Delete request for new comments
+// deleteComments = () => {
+//     axios.delete("https://project-1-api.herokuapp.com/comments/:commentID?api_key=" + API_KEY)
+//         .then(res => {
+//         console.log(res.data)
+//         // forEach to run through all the data
+//         res.data.forEach(commentObject => {
+//             // delete each obj
+//             displayComment(commentObject);
+//         })
+//         })
+//         // catch errors
+//         .catch(err => {
+//             console.log(err);
+//         })
+// };
+// // Invocation of delete request
+// deleteComments();
