@@ -113,7 +113,6 @@ const displayComment = (commentObject) => {
     // Time ago Format
 
 
-   
     // Add date to timestamp
     commentTimestamp.innerText = dateFormatted;
 
