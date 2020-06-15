@@ -776,6 +776,10 @@ body {
   cursor: pointer;
 }
 
+.join-convo__comments .comment__form-container .comment__form--input .add__comment__form .submit-container .button:hover {
+  background: #000000;
+}
+
 .join-convo__comments .comment-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -856,6 +860,7 @@ body {
 .join-convo__comments .comment__timestamp {
   color: #E1E1E1;
   font-weight: 100;
+  margin-left: 8px;
   font-size: 13px;
   line-height: 18px;
 }
@@ -887,6 +892,11 @@ body {
   -webkit-box-shadow: 0px 10px 8px -4px #000000;
           box-shadow: 0px 10px 8px -4px #000000;
   padding: 8px 0px;
+}
+
+.join-convo .remove-container .remove-button:hover {
+  background: #000000;
+  color: #FFFFFF;
 }
 
 /*footer*/
