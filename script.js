@@ -33,20 +33,24 @@ const form = document.querySelector('#add__comment__form');
 const selectForm = (e) => {
     // prevents the page from refreshing
     e.preventDefault();
+
     // name value entered
     nameValue = e.target.userName.value; // fix
     // comment value entered
     commentValue = e.target.userComment.value;
+
     // check/verification
     console.log(nameValue);
     console.log(commentValue);
+
+    //declare the object that stores all the values inputted
     let commentObject = {name: nameValue, timestamp: Date.now(), comment: commentValue};
     // ^ could use new Date() for timestamp, but will be formatted to time ago regardless
 
     // Display inputted comment
     displayComment(commentObject);
     // Invocation of post request
-    postComments(commentObject);
+    postComments(commentObject.name, commentObject.comment);
     // resets form fields
     form.reset();
 };
@@ -55,10 +59,10 @@ const selectForm = (e) => {
 form.addEventListener("submit", selectForm);
 
 // Post request for new comments
-postComments = (commentObject) => {
+postComments = (userName, userComment) => {
     axios.post(url + API_KEY, {
-        name: "",
-        comment: ""
+        name: userName,
+        comment: userComment
     })
         .then(res => {
         console.log(res.data)
@@ -69,8 +73,6 @@ postComments = (commentObject) => {
             console.log(err);
         })
 };
-// // Invocation of post request
-// postComments();
 
 // Display on to the page function
 const displayComment = (commentObject) => {
@@ -114,8 +116,6 @@ const displayComment = (commentObject) => {
     let dateFormatted = objDate;
     // Add date to timestamp
     commentTimestamp.innerText = dateFormatted;
-    
-
 
     // Append username and timestamp within title to head the comment
     commentTitle.append(userNameText, commentTimestamp);
