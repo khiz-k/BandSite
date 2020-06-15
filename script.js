@@ -26,16 +26,16 @@ getComments = () => {
 // Invocation of get request
 getComments();
 
-//Form DOM
+// Form DOM
+// Find form and assign to a variable
 const form = document.querySelector('#add__comment__form');
-
 // Create a function that will be a callback to the addEventListener
 const selectForm = (e) => {
     // prevents the page from refreshing
     e.preventDefault();
 
     // name value entered
-    nameValue = e.target.userName.value; // fix
+    nameValue = e.target.userName.value;
     // comment value entered
     commentValue = e.target.userComment.value;
 
@@ -107,12 +107,43 @@ const displayComment = (commentObject) => {
     let commentTimestamp = document.createElement("h5");
     commentTimestamp.setAttribute("class", "comment__timestamp");
     let objDate = `${commentObject.timestamp}`;
-    // Format Date
-    let d = Date(objDate);
-    let dateFormatted= d.toString();
-    // Time ago Format
 
+    // Format Date to time ago format
 
+    // timeAgo Function
+    const timeAgo = (date) => {
+
+        let seconds = Math.floor((new Date() - date) / 1000);
+      
+        let interval = Math.floor(seconds / 31536000);
+      
+        if (interval > 1) {
+          return interval + " years ago";
+        }
+        interval = Math.floor(seconds / 2592000);
+        if (interval > 1) {
+          return interval + " months ago";
+        }
+        interval = Math.floor(seconds / 86400);
+        if (interval > 1) {
+          return interval + " days ago";
+        }
+        interval = Math.floor(seconds / 3600);
+        if (interval > 1) {
+          return interval + " hours ago";
+        }
+        interval = Math.floor(seconds / 60);
+        if (interval > 1) {
+          return interval + " minutes ago";
+        }
+        return Math.floor(seconds) + " seconds ago";
+
+        // update time every min
+        setTimeout(timeAgo, 60000);
+    };
+
+    // invoke timeAgo and set it to a variable
+    let dateFormatted = timeAgo(objDate);
     // Add date to timestamp
     commentTimestamp.innerText = dateFormatted;
 
@@ -153,22 +184,43 @@ const displayComment = (commentObject) => {
     commentContainer.prepend(commentBlock);
 };
 
-// Delete request for new comments
-// deleteComments = (commentId) => {
-//     axios.delete("https://project-1-api.herokuapp.com/comments/:commentID?api_key=" + API_KEY, {
-//         id: commentId 
-//     })
-//         .then(res => {
-//         console.log(res.data)
-//         // forEach to run through all the data
-//         // res.data.forEach(commentObject => {
-//         //     displayComment(commentObject);
-//         // })
-//         })
-//         // catch errors
-//         .catch(err => {
-//             console.log(err);
-//         })
-// };
-// // Invocation of delete request
-// deleteComments();
+// Delete request for comments
+deleteComments = (commentID) => {
+    axios.delete("https://project-1-api.herokuapp.com/comments/:commentID?api_key=" + API_KEY, {
+        id: commentID 
+    })
+        .then(res => {
+        console.log(res.data)
+        })
+        // catch errors
+        .catch(err => {
+            console.log(err);
+        })
+};
+
+
+// Remove Button DOM
+// Find button and assign it to a variable
+const buttonVar = document.querySelector('#remove-button');
+// Create a function that will be a callback to the addEventListener
+const selectButton = (e) => {
+    // prevents the page from refreshing
+    e.preventDefault();
+
+    /* This Area needs to be fixed in order to operate the deleteComments request without reading null
+    // button value 
+    buttonIDValue = e.target.removeComment;
+    // declare the object that stores all the values inputted
+    let commentObject = {id: buttonIDValue};
+    */
+
+    // // Display inputted comment
+    // displayComment(commentObject);
+    // Invocation of delete request
+    deleteComments(commentObject.id);
+    // resets form fields
+    buttonVar.reset();
+};
+
+//invoke 'addEventListener' on button, passing 'submit' type
+buttonVar.addEventListener("submit", selectButton);
