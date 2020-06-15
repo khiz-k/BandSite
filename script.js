@@ -108,11 +108,12 @@ const displayComment = (commentObject) => {
     commentTimestamp.setAttribute("class", "comment__timestamp");
     let objDate = `${commentObject.timestamp}`;
     // Format Date
-    
-    // Time ago format
+    let d = Date(objDate);
+    let dateFormatted= d.toString();
+    // Time ago Format
 
-    // Set to new variable
-    let dateFormatted = objDate;
+
+   
     // Add date to timestamp
     commentTimestamp.innerText = dateFormatted;
 
