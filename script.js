@@ -28,7 +28,7 @@ getComments();
 
 // Form DOM
 // Find form and assign to a variable
-const form = document.querySelector('#add__comment__form');
+const form = document.getElementByID('#add__comment__form');
 // Create a function that will be a callback to the addEventListener
 const selectForm = (e) => {
     // prevents the page from refreshing
@@ -77,7 +77,7 @@ postComments = (userName, userComment) => {
 const displayComment = (commentObject) => {
   
     // Find comment container that holds all comments
-    let commentContainer = document.querySelector(".comment-container");
+    let commentContainer = document.getElementByID(".comment-container");
 
     // Create a comment block to harbour the comment image and text
     let commentBlock = document.createElement("div");
