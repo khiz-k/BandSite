@@ -1,2 +1,2 @@
 # BandSite
-Website for Bands
+Website for Bands & Musicians
