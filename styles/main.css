@@ -165,8 +165,7 @@ body {
 }
 
 .nav-bar__list__item:hover {
-  background-color: #FFFFFF;
-   color: #323232;
+  color: #323232;
 }
 
 .nav-bar__list__item--active {
